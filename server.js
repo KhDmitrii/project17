@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 const express = require('express');
 // https://www.npmjs.com/package/morgan
 const morgan = require('morgan');
+// https://www.npmjs.com/package/cors
+const cors = require('cors');
 // Функция подключения к БД
 const connectDB = require('./config/db');
 
@@ -26,6 +28,9 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+// Enable CORS
+app.use(cors());
 
 //Mount routes
 app.use('/api/v1/personals', personals);
